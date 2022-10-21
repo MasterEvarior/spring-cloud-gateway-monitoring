@@ -2,7 +2,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "prometheus"
 server:
   port: 8080
 spring:
