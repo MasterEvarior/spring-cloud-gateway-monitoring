@@ -67,6 +67,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>spring-cloud-gateway</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
