@@ -2,9 +2,26 @@ management:
   endpoints:
     web:
       exposure:
-        include: "prometheus"
-  metrics:
-    tags:
-      application: ${spring.application.name}}
+        include: "*"
 server:
   port: 8080
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: "200 Ok"
+          uri: "http://httpstat.us/200"
+          predicates:
+            - Path=/200
+        - id: "300 Multiple Choices"
+          uri: "http://httpstat.us/300"
+          predicates:
+            - Path=/300
+        - id: "401 Not Authorized"
+          uri: "http://httpstat.us/401"
+          predicates:
+            - Path=/401
+        - id: "404 Not Found"
+          uri: "http://httpstat.us/401"
+          predicates:
+            - Path=/404
