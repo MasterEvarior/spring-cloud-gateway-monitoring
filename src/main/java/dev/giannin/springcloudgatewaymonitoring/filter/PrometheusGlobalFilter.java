@@ -25,7 +25,8 @@ public class PrometheusGlobalFilter implements GlobalFilter {
                 .description("The total received requests")
                 .tag("method", exchange.getRequest().getMethodValue())
                 .tag("path", exchange.getRequest().getPath().toString())
-                .register(this.meterRegistry);
+                .register(this.meterRegistry)
+                .increment();
 
 
         return chain.filter(exchange)
@@ -37,7 +38,8 @@ public class PrometheusGlobalFilter implements GlobalFilter {
                         Counter.builder("gateway.responses.total")
                                 .description("The total handled responses")
                                 .tag("status", Integer.toString(statusCode))
-                                .register(this.meterRegistry);
+                                .register(this.meterRegistry)
+                                .increment();
                     }
                 }));
     }
