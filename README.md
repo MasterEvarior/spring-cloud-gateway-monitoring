@@ -29,10 +29,14 @@ To run this application you need:
 
 ### Run the application
 Build the maven project  
-`mvn clean package`  
+```shell
+mvn clean package
+```
 
-Run docker-compose  
-`docker-compose up`
+Run docker-compose 
+```shell
+docker-compose up
+```
 
 If you execute `docker ps` you should now see three containers running (some things will differ though)
 ```shell
@@ -41,8 +45,13 @@ CONTAINER ID   IMAGE                         COMMAND                  CREATED   
 37bb0b105e27   grafana/grafana:latest        "/run.sh"                2 hours ago    Up 2 hours   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   spring-cloud-gateway-monitoring-grafana-1
 90db75229a20   spring-cloud-gateway:latest   "java -jar /app.jar"     43 hours ago   Up 2 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   spring-cloud-gateway-monitoring-spring-cloud-gateway-1
 ```
-Also if you open http://localhost:9090/targets?search= you should see that Prometheus can connect to your gateway and receive its metrics.
+Also if you open http://localhost:9090/targets?search= you should see that Prometheus can connect to your gateway and receive its metrics.  
 ![Prometheus screenshot](https://raw.githubusercontent.com/MasterEvarior/spring-cloud-gateway-monitoring/master/docs/prometheus.png)
+
+If you want to 'simulate' traffic, run the `example-traffic` script. It is just a glorified while-loop, but it does the job.
+```shell
+bash ./example-traffic
+```
 
 ### Looking at all those pretty graphs
 To see all the data in Grafana you have to log in and create some dashboards first.
