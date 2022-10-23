@@ -25,3 +25,7 @@ spring:
           uri: "http://httpstat.us/401"
           predicates:
             - Path=/404
+        - id: "500 Internal Server Error"
+          uri: "http://httpstat.us/401"
+          predicates:
+            - Path=/500
